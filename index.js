@@ -45,12 +45,18 @@
           hook.afterEach(function (html) {
             return generateHeader(title(vm.route.file)) + html
           })
+          
         } else {
           var header = generateHeader(title)
-  
-          hook.afterEach(function (html) {
-            return html + header
+          
+          hook.beforeEach(function (content) {
+              return content + "\n\n" + header
           })
+          
+          //hook.afterEach(function (html) {
+          //  return html + header
+          //})
+            
         }
   
   
